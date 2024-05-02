@@ -1,0 +1,12 @@
+# Ignore Go build files
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+bin/
+pkg/
+
+# System files
+.DS_Store
+Thumbs.db
