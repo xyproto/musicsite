@@ -1,31 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Musician Network</title>
+    <link rel="stylesheet" href="style.css">
+</head>
 <body>
-    <header id="appHeader" class="headline">Welcome to Musician Network</header>
-    <main id="appMain" class="container">
-        <button onclick="addNumbers()">Add 3 + 4</button>
-        <p id="result"></p>
+    <header>
+        <h1>Musician Network (MVP)</h1>
+        <nav>
+            <a href="/">Home</a>
+            <a href="#" onclick="showProfile()">Profile</a>
+            <a href="#" onclick="logout()">Logout</a>
+            <input type="text" placeholder="Search...">
+        </nav>
+    </header>
+    <main>
+        <section id="auth">
+            <button onclick="showRegisterForm()">Register</button>
+            <button onclick="showLoginForm()">Login</button>
+            <div id="authForms"></div>
+        </section>
+        <section id="postMessage">
+            <input type="text" id="messageInput" placeholder="Your message">
+            <button onclick="postMessage()">Post Message</button>
+        </section>
+        <section id="feed"></section>
     </main>
-    <main id="appMain" class="container">
-        <canvas id="myCanvas" width="200" height="200" style="border:1px solid #000000;"></canvas>
-        <button onclick="drawPixel()">Draw Pixel</button>
-    </main>
-    <footer id="appFooter"></footer>
+    <footer>
+        Footer: <a href="#">About</a> | <a href="#">Contact</a> | © 2024 ASDF ASDF TEST
+    </footer>
     <script src="wasm_exec.js"></script>
-<script>
-    const go = new Go();
-    WebAssembly.instantiateStreaming(fetch('main.wasm'), go.importObject).then((result) => {
-        go.run(result.instance);
-    }).catch((err) => {
-        console.error('Failed to load WASM:', err);
-    });
-
-    function addNumbers() {
-        try {
-            // Directly call `add` as it is set on the global scope
-            const result = add(3, 4);
-            document.getElementById('result').innerText = 'Result of 3 + 4 is: ' + result.toString();
-        } catch (e) {
-            console.error('Error calling add:', e);
-        }
-    }
-</script>
+    <script>
+        const go = new Go();
+        WebAssembly.instantiateStreaming(fetch('main.wasm'), go.importObject).then((result) => {
+            go.run(result.instance);
+        }).catch((err) => {
+            console.error('Failed to load WASM:', err);
+        });
+    </script>
 </body>
+</html>
